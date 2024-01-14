@@ -1,0 +1,6 @@
+git+https://github.com/mchaput/whoosh.git
+fastapi
+pydantic
+uvicorn
+onnxruntime
+flet
