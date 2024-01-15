@@ -24,7 +24,7 @@ class MenuBar(ft.UserControl):
                         ft.MenuItemButton(
                             height=30,
                             content=ft.Text("Import Files"),
-                            #leading=ft.Icon(ft.icons.SAVE),
+                            leading=ft.Icon(ft.icons.FILE_COPY),
                         ),
                         ft.SubmenuButton(
                             height=30,
@@ -60,10 +60,37 @@ class MenuBar(ft.UserControl):
                                 ),
                             ],
                         ),
+                        #ft.Divider(),
                         ft.MenuItemButton(
                             height=30,
-                            content=ft.Text("Save"),
-                            #leading=ft.Icon(ft.icons.SAVE),
+                            content=ft.Text("Open"),
+                            leading=ft.Icon(ft.icons.FOLDER_OPEN),
+                        ),
+                        #ft.Divider(),
+                        ft.MenuItemButton(
+                            height=30,
+                            content=ft.Text("Options"),
+                            leading=ft.Icon(ft.icons.SETTINGS),
+                        ),
+                        ft.MenuItemButton(
+                            height=30,
+                            content=ft.Text("Shortcuts"),
+                            leading=ft.Icon(ft.icons.KEYBOARD),
+                        ),
+                        ft.MenuItemButton(
+                            height=30,
+                            content=ft.Text("Minimize to system tray"),
+                            leading=ft.Icon(ft.icons.ARROW_DOWNWARD),
+                        ),
+                        ft.MenuItemButton(
+                            height=30,
+                            content=ft.Text("Restart"),
+                            leading=ft.Icon(ft.icons.REFRESH),
+                        ),
+                        ft.MenuItemButton(
+                            height=30,
+                            content=ft.Text("Exit Force Maintainance"),
+                            leading=ft.Icon(ft.icons.CONSTRUCTION),
                         ),
                         ft.MenuItemButton(
                             height=30,
@@ -80,6 +107,7 @@ class MenuBar(ft.UserControl):
                         ft.SubmenuButton(
                             height=30,
                             content=ft.Text("Zoom"),
+                            leading=ft.Icon(ft.icons.LOCATION_SEARCHING),
                             controls=[
                                 ft.MenuItemButton(
                                     height=30,
@@ -199,16 +227,14 @@ class PopUp(ft.UserControl):
     def build(self):
         popup = ft.FloatingActionButton(
                     shape=ft.ContinuousRectangleBorder(),
-                    
-                    width=200,
+                    width=250,
                     height=30,
-                    #right=20,
-                    bgcolor=ft.colors.GREY_900,   
-                    offset=ft.Offset(0, -1), # hardcoded offset so we can put the FloatingActionButton in the bottom right corner. This SHOULD be changed. 
+                    bgcolor=ft.colors.GREY_900, 
+                    offset=ft.Offset(0, -1), # Hardcoded offset so we can put the FloatingActionButton in the bottom right corner. This SHOULD be changed since it breaks the layout in other ways.
                     tooltip="",
                     content=ft.Row(
                         controls=[
-                            ft.Text("10 messages", expand=True, text_align="left", no_wrap=True),
+                            ft.Text("10 messages", expand=True, text_align="center", no_wrap=True),
                             ft.TextButton("dismiss all",
                                            style=ft.ButtonStyle(
                                                bgcolor=ft.colors.GREY_700,
@@ -217,11 +243,16 @@ class PopUp(ft.UserControl):
                                                shape=ft.ContinuousRectangleBorder(),
                                                ),
                                                expand=True,
+                                               tooltip="Dismiss all empty popup messages.",
                                             ),
-                            ft.Icon(ft.icons.KEYBOARD_ARROW_UP),
+                            ft.Icon(
+                                ft.icons.KEYBOARD_ARROW_UP,
+                                tooltip="Expand to show all the popup messages.",
+                                ),
                             ],
                     ),
                 )
+        
         return popup
 
 
@@ -248,13 +279,14 @@ def main(page: ft.Page):
             expand=True,
             controls=[
                 MenuBar(),
-                PageOfPages().build(),
+                PageOfPages().build(), # This is a workaround to get the page to show up. 
                 #PopUp(),
                 BottomBar(),
             ],
         )
     )
 
+    # Create our popup manager.
     page.floating_action_button = PopUp().build()
     page.floating_action_button_location = ft.FloatingActionButtonLocation.MINI_END_FLOAT
 
