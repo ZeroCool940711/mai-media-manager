@@ -179,26 +179,43 @@ class PageOfPages(ft.UserControl):
         tabs = [
                 ft.Tab(
                     text="All",
-                    content=ft.Text("Tab 1 Content")
+                    content=ft.Row(
+                        controls=[
+                            SearchPanel(expand=2),
+                            ft.VerticalDivider(width=0.1),
+                            ft.Container(
+                                expand=8,
+                                content=ft.Text("Results"),
+                                )
+                        ]
+                    ),
                 ),
                 #ft.Tab(tab_content=ft.Icon(ft.icons.ADD), visible=False),
-                # ft.Tab(
-                #     text="Tab 2",
-                #     content=ft.Text("Tab 2 Content"),
-                # ),
-                # ft.Tab(
-                #     text="Tab 3",
-                #     content=ft.Text("Tab 3 Content"),
-                # ),
                 ]
         t = ft.Tabs(
-            expand=1,
+            expand=True,
             selected_index=0,
             tabs=tabs,
-            #height=900,
         )
 
         return t
+
+class SearchPanel(ft.UserControl):
+    """This is the left search panel."""
+    def build(self):
+        search = ft.SearchBar(
+            width=350,
+            view_shape=ft.ContinuousRectangleBorder(),
+            expand=True,
+        )
+
+        search_panel = ft.Row(
+            controls=[
+                ft.Text("Search", expand=True),
+            ],
+        )
+        
+        return search_panel
 
 class BottomBar(ft.UserControl):
     def build(self):
@@ -209,7 +226,7 @@ class BottomBar(ft.UserControl):
 
         bottombar = ft.Column(
             controls=[
-                ft.Divider(height=1),
+                ft.Divider(height=0.1),
                 ft.Row(
                     controls=[
                         search_info,
@@ -218,13 +235,14 @@ class BottomBar(ft.UserControl):
                         current_job,
                     ],
                 ),
-                ft.Divider(height=0.1, thickness=0.1),
+                ft.Divider(height=0.1),
             ],
         )
         return bottombar
 
 class PopUp(ft.UserControl):
     def build(self):
+
         popup = ft.FloatingActionButton(
                     shape=ft.ContinuousRectangleBorder(),
                     width=250,
@@ -255,7 +273,6 @@ class PopUp(ft.UserControl):
         
         return popup
 
-
 def main(page: ft.Page):
     """This is the main function of the frontend. It is called when the frontend is started."""
     
@@ -279,6 +296,7 @@ def main(page: ft.Page):
             expand=True,
             controls=[
                 MenuBar(),
+                #ft.Divider(height=0.1), # This adds a divider between the menu bar and the tabs which makes it look better but uses a bit more space.
                 PageOfPages().build(), # This is a workaround to get the page to show up. 
                 #PopUp(),
                 BottomBar(),
