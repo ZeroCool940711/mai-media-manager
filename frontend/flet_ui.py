@@ -180,12 +180,13 @@ class PageOfPages(ft.UserControl):
                 ft.Tab(
                     text="All",
                     content=ft.Row(
+                        expand=1,
                         controls=[
-                            SearchPanel(expand=2),
+                            SearchPanel(expand=4),
                             ft.VerticalDivider(width=0.1),
                             ft.Container(
-                                expand=8,
-                                content=ft.Text("Results"),
+                                expand=15,
+                                content=ft.Text("Results", expand=True),
                                 )
                         ]
                     ),
@@ -193,7 +194,7 @@ class PageOfPages(ft.UserControl):
                 #ft.Tab(tab_content=ft.Icon(ft.icons.ADD), visible=False),
                 ]
         t = ft.Tabs(
-            expand=True,
+            expand=8,
             selected_index=0,
             tabs=tabs,
         )
@@ -204,14 +205,236 @@ class SearchPanel(ft.UserControl):
     """This is the left search panel."""
     def build(self):
         search = ft.SearchBar(
-            width=350,
             view_shape=ft.ContinuousRectangleBorder(),
-            expand=True,
+            expand=8,
         )
 
-        search_panel = ft.Row(
+        file_sort = ft.Row(
+                    spacing=10,
+                    controls=[
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "sort by tags: series-creator-title-volume-chapter-page",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=4,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,
+                                
+                            ),
+                        ),
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "display tags",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=2,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,                                
+                            ),
+                        ),
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "a-z",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=1,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,
+                                
+                            ),                            
+                        ),
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "tags",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=1,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,
+                                
+                            ),                            
+                        ),
+                    ],
+                    expand=1,
+                )
+        
+        file_collection = ft.Row(
+                    spacing=10,
+                    controls=[
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "no collections",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=3,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,
+                                
+                            ),
+                        ),
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "collected unmatched",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=2,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,                                
+                            ),
+                        ),
+                        ft.ElevatedButton(
+                            content=ft.Text(
+                                "tags",
+                                 no_wrap=True,
+                                 text_align="center",
+                                 max_lines=1,
+                                 color=ft.colors.WHITE,
+                                 ),
+                            expand=1,
+                            style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=5,  
+                            ),                            
+                        ),
+                    ],
+                    expand=1,
+                )
+    
+
+        search_panel = ft.Column(
+            spacing=0,
+            tight=True,
+            run_spacing=0,
             controls=[
-                ft.Text("Search", expand=True),
+                file_sort,
+                file_collection,
+                ft.Row(
+                    wrap=True,
+                    expand=2,
+                    controls=[
+                        ft.Divider(height=1),
+                        ft.Text(
+                            "search",
+                            no_wrap=True,
+                            text_align="center",
+                            max_lines=1,
+                            color=ft.colors.WHITE,
+                            width=350,
+                        ),
+                        ft.Divider(height=0.1),
+                ],
+                ),
+                ft.Column(
+                    controls=[
+                        ft.Container(
+                            alignment=ft.alignment.top_left,
+                            #height=300,
+                            width=400,
+                            padding=5,
+                            bgcolor=ft.colors.GREY_900,
+                            content=
+                            ft.Text(
+                                "system:inbox (3,223,005)",
+                                no_wrap=True,
+                                text_align="left",
+                                max_lines=1,
+                                color=ft.colors.WHITE,
+                                width=350,
+                                expand=True,
+                            ),
+                            expand=1,
+                        ),
+                    ],
+                    expand=5,
+                ),
+                ft.Row(
+                    controls=[
+                       search,
+                       ft.IconButton(
+                           expand=1,
+                           icon=ft.icons.EVENT_NOTE_OUTLINED,
+                           style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=1,
+                                bgcolor=ft.colors.GREY_800,
+                                ),
+                        ),
+                       ft.IconButton(
+                           expand=1,
+                           icon=ft.icons.STAR,
+                           style=ft.ButtonStyle(
+                                shape=ft.ContinuousRectangleBorder(),
+                                elevation=5,
+                                padding=1,
+                                bgcolor=ft.colors.GREY_800,
+                                ),
+                        ),
+                    ],
+                    expand=1,
+                ),
+                ft.Row(
+                    wrap=True,
+                    expand=8,
+                    alignment=ft.alignment.top_center,
+                    controls=[
+                        ft.Divider(height=0.1),
+                        ft.Text(
+                            "selection tags",
+                            no_wrap=True,
+                            text_align="center",
+                            max_lines=1,
+                            color=ft.colors.WHITE,
+                            width=350,
+                        ),
+                        
+                        ft.Divider(height=0.1),
+                    ],
+                ),
+                ft.Container(
+                        alignment=ft.alignment.center,
+                        padding=0,
+                        bgcolor=ft.colors.GREY_900,
+                        content=
+                        ft.Image(
+                            src="https://cdn.wallpapersafari.com/47/56/TZx1WH.png",
+                            expand=1,
+                            fit=ft.ImageFit.FILL,
+                        ),
+                        expand=9,
+                    ),
             ],
         )
         
@@ -219,15 +442,45 @@ class SearchPanel(ft.UserControl):
 
 class BottomBar(ft.UserControl):
     def build(self):
-        search_info = ft.Text("No search", tooltip="No Search", text_align="left", expand=True)
-        network_info = ft.Text("16.5 GB (1 MB/s)", tooltip="Total bandwidth used on this session, and current network speed.", text_align="right")
-        status = ft.Text("idle", tooltip="Simple status of the application", text_align="right")
-        current_job = ft.Text("no job", tooltip="Current job", text_align="right")
+        search_info = ft.Text(
+            "no search",
+            tooltip="No Search",
+            text_align="left",
+            size=13,
+            expand=7,
+            no_wrap=True,
+            )
+        network_info = ft.Text(
+            "16.5 GB (1 MB/s)",
+            tooltip="Total bandwidth used on this session, and current network speed.", 
+            text_align="left",
+            size=13,
+            no_wrap=True,
+            expand=1,
+            )
+        status = ft.Text(
+            "idle", 
+            tooltip="Simple status of the application", 
+            text_align="left",
+            size=13,
+            no_wrap=True,
+            expand=1,
+            )
+        current_job = ft.Text(
+            "no job", 
+            tooltip="Current job", 
+            text_align="left",
+            size=13,
+            no_wrap=True,
+            expand=3,
+            )
 
         bottombar = ft.Column(
+            expand=1,
             controls=[
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.01),
                 ft.Row(
+                    tight=True,
                     controls=[
                         search_info,
                         network_info,
@@ -235,7 +488,7 @@ class BottomBar(ft.UserControl):
                         current_job,
                     ],
                 ),
-                ft.Divider(height=0.1),
+                ft.Divider(height=0.01),
             ],
         )
         return bottombar
@@ -248,11 +501,17 @@ class PopUp(ft.UserControl):
                     width=250,
                     height=30,
                     bgcolor=ft.colors.GREY_900, 
-                    offset=ft.Offset(0, -1), # Hardcoded offset so we can put the FloatingActionButton in the bottom right corner. This SHOULD be changed since it breaks the layout in other ways.
+                    #offset=ft.Offset(0, -1), # Hardcoded offset so we can put the FloatingActionButton in the bottom right corner. This SHOULD be changed since it breaks the layout in other ways.
                     tooltip="",
                     content=ft.Row(
+                        expand=1,
                         controls=[
-                            ft.Text("10 messages", expand=True, text_align="center", no_wrap=True),
+                            ft.Text(
+                                "10 messages",
+                                expand=3, 
+                                text_align="center", 
+                                no_wrap=True
+                                ),
                             ft.TextButton("dismiss all",
                                            style=ft.ButtonStyle(
                                                bgcolor=ft.colors.GREY_700,
@@ -260,11 +519,12 @@ class PopUp(ft.UserControl):
                                                padding=5,
                                                shape=ft.ContinuousRectangleBorder(),
                                                ),
-                                               expand=True,
+                                               expand=2,
                                                tooltip="Dismiss all empty popup messages.",
                                             ),
                             ft.Icon(
                                 ft.icons.KEYBOARD_ARROW_UP,
+                                expand=1,
                                 tooltip="Expand to show all the popup messages.",
                                 ),
                             ],
@@ -293,7 +553,7 @@ def main(page: ft.Page):
     # Create our page content.
     page.add(
         ft.Column(
-            expand=True,
+            expand=1,
             controls=[
                 MenuBar(),
                 #ft.Divider(height=0.1), # This adds a divider between the menu bar and the tabs which makes it look better but uses a bit more space.
