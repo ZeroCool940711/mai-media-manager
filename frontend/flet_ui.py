@@ -501,7 +501,6 @@ class PopUp(ft.UserControl):
                     width=250,
                     height=30,
                     bgcolor=ft.colors.GREY_900, 
-                    #offset=ft.Offset(0, -1), # Hardcoded offset so we can put the FloatingActionButton in the bottom right corner. This SHOULD be changed since it breaks the layout in other ways.
                     tooltip="",
                     content=ft.Row(
                         expand=1,
@@ -566,7 +565,7 @@ def main(page: ft.Page):
 
     # Create our popup manager.
     page.floating_action_button = PopUp().build()
-    page.floating_action_button_location = ft.FloatingActionButtonLocation.MINI_END_FLOAT
+    page.floating_action_button_location = (260, 80)
 
     page.update()
 
