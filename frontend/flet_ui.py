@@ -455,7 +455,7 @@ class SearchPanel(ft.UserControl):
                             bgcolor=ft.colors.GREY_900,
                             content=
                             ft.Image(
-                                src="https://cdn.wallpapersafari.com/47/56/TZx1WH.png",
+                                src="assets/image_viewer_background.png",
                                 expand=1,
                                 fit=ft.ImageFit.FILL,
                             ),
