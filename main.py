@@ -573,6 +573,15 @@ def main(page: ft.Page):
     page.title = "Mai Media Manager"
     page.theme_mode = 'dark'
     
+    # Set the page transitions for each platform.
+    theme = ft.Theme()
+    theme.page_transitions.android = ft.PageTransitionTheme.OPEN_UPWARDS
+    theme.page_transitions.ios = ft.PageTransitionTheme.CUPERTINO
+    theme.page_transitions.macos = ft.PageTransitionTheme.FADE_UPWARDS
+    theme.page_transitions.linux = ft.PageTransitionTheme.ZOOM
+    theme.page_transitions.windows = ft.PageTransitionTheme.NONE
+    page.theme = theme
+    
     # set padding to 0 to remove the default padding or the menu bar and bottom bar will look out of place.
     page.padding = 0
     
