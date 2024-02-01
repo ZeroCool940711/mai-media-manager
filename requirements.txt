@@ -1,6 +1,7 @@
-git+https://github.com/mchaput/whoosh.git
+git+https://github.com/Sygil-Dev/whoosh-reloaded.git
 fastapi
 pydantic
 uvicorn
 flet
 pytest
+loguru
