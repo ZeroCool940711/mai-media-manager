@@ -615,5 +615,6 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    # logging.basicConfig(level=logging.INFO)
+    logger.info("Starting the frontend.")
     ft.app(target=main, port=8000)
