@@ -149,3 +149,4 @@ cython_debug/
 /frontend/streamlit_ui.py
 *.wpr
 /Mai.code-workspace
+/db/

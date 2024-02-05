@@ -4,3 +4,4 @@ pydantic
 uvicorn
 flet
 git+https://github.com/lorey/mlscraper#egg=mlscraper
+loguru

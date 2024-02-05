@@ -14,11 +14,11 @@
 				"program": "e:\\python\\envs\\mai\\scripts\\flet.exe",
 				"args": [
 					"run",
-					"frontend/flet_ui.py",
+					"src/mai/main.py",
 					"-d",
 					"-r",
 				],
-				"env": {	
+				"env": {
 					"PYDEVD_DISABLE_FILE_VALIDATION": "1",
 				}
 			}
