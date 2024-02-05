@@ -16,7 +16,7 @@ repos:
     rev: '24.1.1'
     hooks:
       - id: black
-        language_version: python3.8
+        language_version: python3.11
         exclude: ^notebooks
   - repo: https://github.com/pycqa/isort
     rev: '5.13.2'
