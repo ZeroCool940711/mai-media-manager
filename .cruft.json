@@ -1,0 +1,26 @@
+{
+  "template": "https://github.com/ZeroCool940711/cookiecutter-python-template",
+  "commit": "59ce4c21bb0343569acb17e6223fe938dae0423a",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Alejandro Gil",
+      "company_name": "Sygil-Dev",
+      "email": "alejandrogilelias940711@gmail.com",
+      "project_name": "Mai",
+      "project_slug": "mai",
+      "module_name": "mai",
+      "project_short_description": "A short summary of the project",
+      "package_manager": "conda",
+      "use_notebooks": "no",
+      "use_docker": "no",
+      "ci_pipeline": "none",
+      "create_cli": "no",
+      "config_file": "none",
+      "code_formatter": "black",
+      "editor_settings": "vscode",
+      "_template": "https://github.com/ZeroCool940711/cookiecutter-python-template"
+    }
+  },
+  "directory": "D:\\Alejandro\\Projects\\Python\\Otros\\Cookiecutter-Templates\\cookiecutter-python-template"
+}
